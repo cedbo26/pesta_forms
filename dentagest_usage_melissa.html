@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulaire — Cartographie d’usage Dentagest (Mélissa)</title>
+  <style>
+    :root { --gap: 14px; --radius: 12px; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.35; margin: 0; background: #f6f7f9; color: #0f172a; }
+    .wrap { max-width: 880px; margin: 24px auto; padding: 0 16px 48px; }
+    header { background: white; border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 20px; margin-bottom: 18px; }
+    header h1 { font-size: 1.4rem; margin: 0 0 6px; }
+    header p { margin: 4px 0; color: #334155; }
+    form { background: white; border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 18px; display: grid; gap: 18px; }
+    fieldset { border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 16px; display: grid; gap: 12px; }
+    legend { padding: 0 6px; font-weight: 650; color: #0f172a; }
+    .row { display: grid; gap: 10px; }
+    @media (min-width: 720px){ .row.grid-2 { grid-template-columns: 1fr 1fr; } }
+    label { font-weight: 600; }
+    .hint { font-size: .9rem; color: #475569; font-weight: 400; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select {
+      width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 10px; background: #fff; font: inherit;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .checkgroup, .radiogroup { display: grid; gap: 8px; margin-top: 6px; }
+    .inline { display: flex; gap: 16px; flex-wrap: wrap; }
+    .muted { color: #64748b; font-size: .9rem; }
+    .actions { display: flex; gap: 10px; justify-content: flex-end; }
+    button { padding: 10px 14px; border-radius: 10px; border: 1px solid #0f172a; background: #0f172a; color: white; font-weight: 600; cursor: pointer; }
+    button.secondary { background: white; color: #0f172a; }
+    .pill { display: inline-block; padding: 2px 8px; border: 1px solid #94a3b8; border-radius: 999px; font-size: .8rem; color: #475569; }
+    .required::after { content: " *"; color: #dc2626; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Cartographie d’usage Dentagest — Mélissa</h1>
+      <p class="muted">Objectif : identifier ce qu’il faut digitaliser et rendre accessible à distance.</p>
+      <p class="pill">Durée : 8–12 min</p>
+    </header>
+
+    <!-- Remplacez l'URL d'action par votre endpoint (ex. Formspree) -->
+    <form action="https://formspree.io/f/xdkljeqb" method="POST" autocomplete="on">
+
+      <input type="hidden" name="form_name" value="Dentagest_Usage_Map_Melissa" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <fieldset>
+        <legend>Identité & contact</legend>
+        <div class="row grid-2">
+          <div>
+            <label class="required" for="who_name">Nom</label>
+            <input id="who_name" name="who_name" type="text" required />
+          </div>
+          <div>
+            <label for="who_role">Rôle/fonction</label>
+            <input id="who_role" name="who_role" type="text" placeholder="Assistante dentaire, propriétaire, etc." />
+          </div>
+        </div>
+        <div class="row grid-2">
+          <div>
+            <label for="who_email">Email</label>
+            <input id="who_email" name="who_email" type="email" />
+          </div>
+          <div>
+            <label for="who_phone">Téléphone</label>
+            <input id="who_phone" name="who_phone" type="tel" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>1) Utilisation quotidienne</legend>
+        <label class="required">Tâches les plus fréquentes</label>
+        <div class="checkgroup">
+          <label><input type="checkbox" name="daily_tasks" value="agenda" /> Agenda / RDV</label>
+          <label><input type="checkbox" name="daily_tasks" value="actes" /> Encodage d’actes</label>
+          <label><input type="checkbox" name="daily_tasks" value="devis" /> Devis / plans de traitement</label>
+          <label><input type="checkbox" name="daily_tasks" value="facturation" /> Facturation</label>
+          <label><input type="checkbox" name="daily_tasks" value="paiements" /> Suivi des paiements</label>
+          <label><input type="checkbox" name="daily_tasks" value="correspondance" /> Correspondance patients</label>
+          <label><input type="checkbox" name="daily_tasks" value="autre" /> Autre</label>
+        </div>
+        <label for="daily_pain">Étapes lourdes ou lentes</label>
+        <textarea id="daily_pain" name="daily_pain" placeholder="Décris les points pénibles ou répétitifs."></textarea>
+        <div class="row grid-2">
+          <div>
+            <label class="required">Accès hors cabinet nécessaire ?</label>
+            <div class="radiogroup inline">
+              <label><input type="radio" name="need_remote" value="oui" required /> Oui</label>
+              <label><input type="radio" name="need_remote" value="non" /> Non</label>
+            </div>
+          </div>
+          <div>
+            <label for="remote_tasks">Si oui, pour quelles tâches ?</label>
+            <input id="remote_tasks" name="remote_tasks" type="text" placeholder="Ex. facturer, vérifier paiements, préparer dossiers" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2) Données patients</legend>
+        <label>Données les plus consultées</label>
+        <div class="checkgroup">
+          <label><input type="checkbox" name="patient_data" value="anamnese" /> Anamnèse / historique</label>
+          <label><input type="checkbox" name="patient_data" value="imagerie" /> Imagerie</label>
+          <label><input type="checkbox" name="patient_data" value="devis" /> Devis / consentements</label>
+          <label><input type="checkbox" name="patient_data" value="factures" /> Factures</label>
+          <label><input type="checkbox" name="patient_data" value="correspondance" /> Correspondance</label>
+        </div>
+        <label for="paper_to_digitize">Documents papier à intégrer</label>
+        <textarea id="paper_to_digitize" name="paper_to_digitize" placeholder="Qu’aimerais-tu retrouver directement dans Dentagest ?"></textarea>
+        <label for="outside_sources">Infos à aller chercher hors Dentagest</label>
+        <input id="outside_sources" name="outside_sources" type="text" placeholder="PC, mails, classeurs, NAS, etc." />
+      </fieldset>
+
+      <fieldset>
+        <legend>3) Imagerie & radiologie</legend>
+        <label class="required">Visualisation principale</label>
+        <div class="radiogroup inline">
+          <label><input type="radio" name="imaging_tool" value="dentagest" required /> Dentagest</label>
+          <label><input type="radio" name="imaging_tool" value="digora" /> Digora</label>
+          <label><input type="radio" name="imaging_tool" value="autre" /> Autre</label>
+        </div>
+        <label for="imaging_transfer">Transferts ou recherches d’images à part</label>
+        <input id="imaging_transfer" name="imaging_transfer" type="text" placeholder="Clé USB, email, disque, etc." />
+        <label class="required">Accès aux radios à distance utile ?</label>
+        <div class="radiogroup inline">
+          <label><input type="radio" name="remote_imaging" value="oui" required /> Oui</label>
+          <label><input type="radio" name="remote_imaging" value="non" /> Non</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>4) Facturation & encaissements</legend>
+        <div class="row grid-2">
+          <div>
+            <label>Canaux de facturation</label>
+            <div class="checkgroup">
+              <label><input type="checkbox" name="billing_channels" value="cmd" /> CMD (export XML)</label>
+              <label><input type="checkbox" name="billing_channels" value="papier" /> Papier</label>
+              <label><input type="checkbox" name="billing_channels" value="assurances" /> Assurances / AI / aide sociale</label>
+              <label><input type="checkbox" name="billing_channels" value="autre" /> Autre</label>
+            </div>
+          </div>
+          <div>
+            <label for="billing_flow">Commentaires sur le flux de facturation</label>
+            <textarea id="billing_flow" name="billing_flow" placeholder="Où ça bloque ? Qu’est-ce qui manque ?"></textarea>
+          </div>
+        </div>
+        <label>Suivi des paiements</label>
+        <div class="checkgroup">
+          <label><input type="checkbox" name="payment_sources" value="dentagest" /> Dentagest</label>
+          <label><input type="checkbox" name="payment_sources" value="cmd" /> Relevés CMD</label>
+          <label><input type="checkbox" name="payment_sources" value="ebanking" /> E-banking</label>
+          <label><input type="checkbox" name="payment_sources" value="fiduciaire" /> Fiduciaire</label>
+        </div>
+        <label for="want_dashboard">Vue rapide souhaitée</label>
+        <input id="want_dashboard" name="want_dashboard" type="text" placeholder="Ex. payé / à encaisser, alertes impayés" />
+      </fieldset>
+
+      <fieldset>
+        <legend>5) Communication & documents</legend>
+        <label>Envois depuis</label>
+        <div class="checkgroup">
+          <label><input type="checkbox" name="mail_tool" value="dentagest" /> Dentagest</label>
+          <label><input type="checkbox" name="mail_tool" value="outlook" /> Outlook / Mail</label>
+          <label><input type="checkbox" name="mail_tool" value="autre" /> Autre</label>
+        </div>
+        <label class="required">Souhait de centraliser les échanges dans Dentagest ?</label>
+        <div class="radiogroup inline">
+          <label><input type="radio" name="centralize_docs" value="oui" required /> Oui</label>
+          <label><input type="radio" name="centralize_docs" value="non" /> Non</label>
+        </div>
+        <label for="doc_examples">Documents à centraliser</label>
+        <input id="doc_examples" name="doc_examples" type="text" placeholder="PDF devis, consentements, résultats, etc." />
+      </fieldset>
+
+      <fieldset>
+        <legend>6) Accès & sécurité</legend>
+        <label>Comptes utilisés</label>
+        <div class="checkgroup">
+          <label><input type="checkbox" name="accounts" value="admin_melissa" /> Admin Mélissa</label>
+          <label><input type="checkbox" name="accounts" value="assistantes" /> Comptes assistantes</label>
+          <label><input type="checkbox" name="accounts" value="dentistes" /> Comptes dentistes</label>
+          <label><input type="checkbox" name="accounts" value="partages_rdl4" /> Accès partagés RDL4</label>
+        </div>
+        <label class="required">Comptes nominatifs souhaités ?</label>
+        <div class="radiogroup inline">
+          <label><input type="radio" name="want_nominative" value="oui" required /> Oui</label>
+          <label><input type="radio" name="want_nominative" value="non" /> Non</label>
+        </div>
+        <label for="security_concerns">Inquiétudes sécurité / sauvegardes</label>
+        <textarea id="security_concerns" name="security_concerns" placeholder="Ex. peur de perte de données, accès non verrouillé, etc."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>7) Vision future</legend>
+        <label for="remote_actions">À faire depuis chez soi</label>
+        <input id="remote_actions" name="remote_actions" type="text" placeholder="Ex. facturer, vérifier paiements, préparer dossiers" />
+        <label>Gains attendus</label>
+        <div class="checkgroup">
+          <label><input type="checkbox" name="gains" value="moins_papier" /> Moins de papier</label>
+          <label><input type="checkbox" name="gains" value="temps" /> Gain de temps</label>
+          <label><input type="checkbox" name="gains" value="securite" /> Meilleure sécurité</label>
+          <label><input type="checkbox" name="gains" value="clarte" /> Clarté financière</label>
+        </div>
+        <label for="automation_wishlist">Fonctions à expliquer/automatiser</label>
+        <textarea id="automation_wishlist" name="automation_wishlist" placeholder="Ex. exports CMD, tableaux de bord, fichiers patients"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Pièces jointes (liens)</legend>
+        <div class="row grid-2">
+          <div>
+            <label for="link_cmd">Lien CMD / portail</label>
+            <input id="link_cmd" name="link_cmd" type="url" placeholder="https://…" />
+          </div>
+          <div>
+            <label for="link_nas">Lien NAS / dossier partagé</label>
+            <input id="link_nas" name="link_nas" type="url" placeholder="https://…" />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="reset" class="secondary">Réinitialiser</button>
+        <button type="submit">Envoyer</button>
+      </div>
+
+      <p class="muted">En envoyant, tu confirmes que les informations peuvent être utilisées pour organiser la digitalisation du cabinet.</p>
+    </form>
+  </div>
+</body>
+</html>
